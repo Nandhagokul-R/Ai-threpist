@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Therapist - App Launcher</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .header h1 {
+            font-size: 3.5em;
+            color: white;
+            text-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.3em;
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .app-button {
+            position: relative;
+            padding: 40px 30px;
+            border-radius: 25px;
+            border: none;
+            cursor: pointer;
+            overflow: hidden;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .app-button:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .app-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s;
+        }
+
+        .app-button:hover::before {
+            transform: translateX(100%);
+        }
+
+        .app-button .icon {
+            font-size: 4em;
+            animation: bounce 2s infinite;
+        }
+
+        .app-button .title {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: white;
+            text-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+            margin: 0;
+        }
+
+        .app-button .description {
+            font-size: 1em;
+            color: rgba(255, 255, 255, 0.95);
+            text-align: center;
+            margin: 0;
+        }
+
+        .app-button .port-info {
+            font-size: 0.85em;
+            color: rgba(255, 255, 255, 0.8);
+            background: rgba(0, 0, 0, 0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            margin-top: 5px;
+        }
+
+        /* Colorful gradient backgrounds for each button */
+        .btn-frontend {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .btn-backend {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .btn-mindpulse {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            animation: rainbowPulse 3s infinite alternate;
+        }
+
+        .btn-chatbot {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+
+        .btn-voxel {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        }
+
+        .btn-lets-go {
+            background: linear-gradient(135deg, #ff6b6b 0%, #feca57 50%, #48dbfb 75%, #ff6b6b 100%);
+            background-size: 300% 300%;
+            animation: gradientShift 4s ease infinite, pulse 2s ease-in-out infinite;
+            grid-column: span 2;
+            border: 3px solid rgba(255, 255, 255, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            .btn-lets-go {
+                grid-column: span 1;
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.03);
+            }
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @keyframes rainbowPulse {
+            0% {
+                filter: hue-rotate(0deg) brightness(1);
+            }
+
+            100% {
+                filter: hue-rotate(360deg) brightness(1.2);
+            }
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .app-button:hover .sparkle {
+            opacity: 1;
+        }
+
+        .sparkle::before,
+        .sparkle::after {
+            content: '✨';
+            position: absolute;
+            font-size: 2em;
+            animation: sparkleFloat 3s infinite;
+        }
+
+        .sparkle::before {
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .sparkle::after {
+            top: 70%;
+            right: 10%;
+            animation-delay: 1.5s;
+        }
+
+        @keyframes sparkleFloat {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+                opacity: 1;
+            }
+        }
+
+        .status-indicator {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #44ff44;
+            box-shadow: 0 0 10px #44ff44;
+            animation: blink 2s infinite;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.3;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌟 AI Therapist Suite 🌟</h1>
+            <p>Choose your wellness journey</p>
+        </div>
+
+        <div class="button-grid">
+            <!-- Let's Go Button - Main Entry Point -->
+            <a href="http://localhost:3000" class="app-button btn-lets-go" target="_blank">
+                <div class="sparkle"></div>
+                <div class="status-indicator"></div>
+                <div class="icon">🚀</div>
+                <h2 class="title">Let's Go!</h2>
+                <p class="description">Start your wellness journey with the main dashboard</p>
+                <span class="port-info">Main Application</span>
+            </a>
+
+            <!-- MindPulse AI Button -->
+            <a href="http://localhost:8501" class="app-button btn-mindpulse" target="_blank">
+                <div class="sparkle"></div>
+                <div class="status-indicator"></div>
+                <div class="icon">🧠</div>
+                <h2 class="title">MindPulse AI</h2>
+                <p class="description">Advanced mental health analysis and insights</p>
+                <span class="port-info">Port 8501</span>
+            </a>
+
+            <!-- Frontend Button -->
+            <a href="http://localhost:3000" class="app-button btn-frontend" target="_blank">
+                <div class="sparkle"></div>
+                <div class="status-indicator"></div>
+                <div class="icon">🎨</div>
+                <h2 class="title">AI Therapist</h2>
+                <p class="description">Main therapy interface with dashboard</p>
+                <span class="port-info">Port 3000</span>
+            </a>
+
+            <!-- Chatbot Button -->
+            <a href="http://localhost:5173" class="app-button btn-chatbot" target="_blank">
+                <div class="sparkle"></div>
+                <div class="status-indicator"></div>
+                <div class="icon">💬</div>
+                <h2 class="title">Aura Chatbot</h2>
+                <p class="description">Have a conversation with your AI companion</p>
+                <span class="port-info">Port 5173</span>
+            </a>
+
+            <!-- Voxel Toy Box Button -->
+            <a href="http://localhost:5174" class="app-button btn-voxel" target="_blank">
+                <div class="sparkle"></div>
+                <div class="status-indicator"></div>
+                <div class="icon">🎮</div>
+                <h2 class="title">Voxel Toy Box</h2>
+                <p class="description">Break your stress with creative play</p>
+                <span class="port-info">Port 5174</span>
+            </a>
+
+            <!-- Backend Status Button -->
+            <a href="http://localhost:3001/health" class="app-button btn-backend" target="_blank">
+                <div class="sparkle"></div>
+                <div class="status-indicator"></div>
+                <div class="icon">⚙️</div>
+                <h2 class="title">Backend Status</h2>
+                <p class="description">Check system health and API status</p>
+                <span class="port-info">Port 3001</span>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Add interactivity and visual flair
+        document.querySelectorAll('.app-button').forEach(button => {
+            button.addEventListener('click', function (e) {
+                // Create a ripple effect on click
+                const ripple = document.createElement('div');
+                ripple.style.position = 'absolute';
+                ripple.style.width = '5px';
+                ripple.style.height = '5px';
+                ripple.style.background = 'rgba(255, 255, 255, 0.7)';
+                ripple.style.borderRadius = '50%';
+                ripple.style.transform = 'scale(0)';
+                ripple.style.animation = 'rippleEffect 0.6s ease-out';
+                ripple.style.pointerEvents = 'none';
+
+                const rect = button.getBoundingClientRect();
+                ripple.style.left = (e.clientX - rect.left) + 'px';
+                ripple.style.top = (e.clientY - rect.top) + 'px';
+
+                button.appendChild(ripple);
+
+                setTimeout(() => ripple.remove(), 600);
+            });
+
+            // Add dynamic sparkle particles
+            const numSparkles = 3;
+            for (let i = 0; i < numSparkles; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.textContent = '✨';
+                sparkle.style.position = 'absolute';
+                sparkle.style.fontSize = '1.5em';
+                sparkle.style.pointerEvents = 'none';
+                sparkle.style.opacity = '0';
+                sparkle.style.left = `${Math.random() * 80 + 10}%`;
+                sparkle.style.top = `${Math.random() * 80 + 10}%`;
+                sparkle.style.animation = `sparkleFloat ${2 + Math.random() * 2}s infinite`;
+                sparkle.style.animationDelay = `${Math.random() * 2}s`;
+
+                const sparkleContainer = button.querySelector('.sparkle');
+                if (sparkleContainer) {
+                    sparkleContainer.appendChild(sparkle);
+                }
+            }
+        });
+
+        // Add ripple animation to CSS
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes rippleEffect {
+                to {
+                    transform: scale(100);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Log app status
+        console.log('%c🌟 AI Therapist Suite Launcher Ready! 🌟', 'color: #667eea; font-size: 20px; font-weight: bold;');
+        console.log('%cMake sure all services are running via start-integrated-app.bat', 'color: #764ba2; font-size: 14px;');
+    </script>
+</body>
+
+</html>

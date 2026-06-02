@@ -1,0 +1,13 @@
+/* Basic styles for Flappy Bird clone */
+html, body { margin: 0; padding: 0; height: 100%; background: #70c5ce; }
+.game-container { position: relative; width: 500px; height: 730px; margin: 20px auto; overflow: hidden; background: linear-gradient(#70c5ce, #c0f4ff); border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+.sky { position: absolute; width: 100%; height: 580px; background: transparent; overflow: hidden; }
+.ground-container { position: relative; width: 500px; margin: 0 auto; }
+.ground-moving { width: 100%; height: 150px; background: url('data:image/svg+xml;utf8,<svg xmlns='"http://www.w3.org/2000/svg"' width='500' height='150'><rect fill='"%2396E072"' width='500' height='150'/><path d='"M0 50 Q50 0 100 50 T200 50 T300 50 T400 50 T500 50 V150 H0 Z"' fill='"%2376C256"'/></svg>'); background-size: cover; animation: ground 3s linear infinite; }
+.bird { position: absolute; width: 40px; height: 30px; background: url('data:image/svg+xml;utf8,<svg xmlns='"http://www.w3.org/2000/svg"' width='40' height='30' viewBox='"0 0 40 30"'><ellipse cx='"15"' cy='"15"' rx='"12"' ry='"9"' fill='"%23ffd166"'/><circle cx='"25"' cy='"12"' r='"6"' fill='"%23ffd166"'/><circle cx='"28"' cy='"12"' r='"2"' fill='"%23000"'/><polygon points='"5,15 12,12 12,18"' fill='"%23ef476f"'/></svg>') no-repeat center/contain; left: 50px; top: 200px; }
+.border-top, .border-left, .border-right { position: absolute; background: rgba(0,0,0,0.1); }
+.border-top { top: 0; left: 0; right: 0; height: 6px; }
+.border-left { left: 0; top: 0; bottom: 0; width: 6px; }
+.border-right { right: 0; top: 0; bottom: 0; width: 6px; }
+@keyframes ground { from { background-position-x: 0; } to { background-position-x: -500px; } }
+

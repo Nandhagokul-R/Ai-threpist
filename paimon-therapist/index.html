@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paimon AI | Your Personal Wellness Companion</title>
+    <!-- SEO Tags -->
+    <meta name="description"
+        content="Meet Paimon, your personal AI therapist and wellness companion. Powered by advanced AI to support your mental health journey.">
+    <meta property="og:title" content="Paimon AI | AI Therapist">
+    <meta property="og:description" content="Talk to Paimon, your advanced AI support agent.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="decor decor-1"></div>
+    <div class="decor decor-2"></div>
+
+    <div class="app-container">
+        <header>
+            <div class="logo-section">
+                <!-- Proactively use the image provided in the root -->
+                <img src="paimon.png" alt="Paimon" class="paimon-mini">
+                <h1>Paimon <span>AI</span></h1>
+            </div>
+            <div class="status-pill">
+                <i class="fas fa-circle-check"></i> Connected
+            </div>
+        </header>
+
+        <main>
+            <aside>
+                <div class="user-card">
+                    <h3>Your Wellness Profile</h3>
+                    <div class="user-info">
+                        <strong>Traveler</strong>
+                        <p>Mental Support Level: High</p>
+                    </div>
+                    <div class="mood-selector">
+                        <button class="mood-btn" title="Happy">😊</button>
+                        <button class="mood-btn" title="Calm">😌</button>
+                        <button class="mood-btn" title="Stressed">😫</button>
+                        <button class="mood-btn" title="SAD">😔</button>
+                    </div>
+                </div>
+
+                <div class="user-card" style="margin-top: 20px;">
+                    <h3>Today's Focus</h3>
+                    <ul style="list-style: none; padding: 10px 0; color: var(--text-dim); font-size: 0.9rem;">
+                        <li style="margin-bottom: 8px;"><i class="fas fa-check-circle"
+                                style="color: var(--primary);"></i> Morning Breathing</li>
+                        <li style="margin-bottom: 8px;"><i class="far fa-circle"></i> Digital Detox (1hr)</li>
+                        <li><i class="far fa-circle"></i> Talk to Paimon</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top: auto; color: var(--text-dim); font-size: 0.8rem; text-align: center;">
+                    Privacy Encrypted • HIPAA Ready
+                </div>
+            </aside>
+
+            <section class="chat-section">
+                <div id="chat-messages">
+                    <div class="message bot-message">
+                        <div class="paimon-indicator">
+                            <i class="fas fa-magic"></i> Paimon
+                        </div>
+                        Hello Traveler! Paimon is here to listen. How are you feeling today? Don't be shy, Paimon has
+                        all the time in the world for you! ✨
+                    </div>
+                </div>
+
+                <div id="typing" class="typing-indicator">Paimon is thinking...</div>
+
+                <div class="input-area">
+                    <input type="text" id="user-input" placeholder="Tell Paimon what's on your mind..."
+                        autocomplete="off">
+                    <button id="send-btn" class="send-btn" aria-label="Send Message">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

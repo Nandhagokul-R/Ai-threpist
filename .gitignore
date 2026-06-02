@@ -1,0 +1,38 @@
+# Dependency directories
+**/node_modules/
+node_modules/
+
+# Next.js and build outputs
+**/.next/
+**/dist/
+**/build/
+**/out/
+
+# Environment files and secrets
+.env
+.env.*
+*.env
+**/.env
+**/.env.*
+**/*.env
+secrete.txt
+secrets.txt
+
+# Log files
+*.log
+**/*.log
+
+# Database files
+*.db
+**/*.db
+
+# Large archives and binaries
+*.zip
+*.tar.gz
+
+# System files
+.DS_Store
+Thumbs.db
+
+# VS Code directory
+.vscode/
