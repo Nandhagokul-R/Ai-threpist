@@ -1,4 +1,4 @@
-# 🌟 AI Therapist & Wellness Suite 🌟
+# 🌟 AI Therapist 🌟
 
 <p align="center">
   <img src="assets/therapist_suite_banner.png" alt="AI Therapist Suite Banner" width="100%" style="border-radius: 15px; margin: 20px 0;" />
